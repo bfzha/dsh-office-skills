@@ -48,9 +48,10 @@ version this package is based on plus a sha256 per upstream skill file.
 ```bash
 npm run check:upstream   # compare the baseline with the newest published upstream version
 npm run apply:upstream   # re-port from the newest published upstream version
+node scripts/sync-from-dsh.mjs <assets-dir> [--version X]   # offline: port from a local extraction
 ```
 
-`scripts/sync-upstream.mjs` downloads the upstream tarball, applies the adaptations
+`scripts/sync-from-dsh.mjs` downloads the upstream tarball, applies the adaptations
 below, and **fails loudly** when an upstream sentence it must rewrite has changed.
 Drift is never silently dropped: update `RULES` in that script and re-run.
 

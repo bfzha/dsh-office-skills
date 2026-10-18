@@ -53,7 +53,7 @@ Modifications made for pi (none of these exist upstream):
   dependencies (upstream describes a DSH-native bootstrap).
 - python/SETUP.md, python/requirements.txt and scripts/resolve-dsoffice.mjs are
   new files written for this port.
-- scripts/sync-upstream.mjs and upstream.json are new files that re-port the
+- scripts/sync-from-dsh.mjs and upstream.json are new files that re-port the
   skill texts from a published upstream version and fail loudly when upstream
   wording drifts (see README, "Keeping up with upstream").
 
