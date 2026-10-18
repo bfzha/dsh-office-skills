@@ -1,0 +1,17 @@
+This is an UNOFFICIAL community port. It is not affiliated with, or endorsed
+by, DeepSeek. All credit for the skill texts and the document engine belongs
+to the DeepSeek Harness team.
+
+Skill texts are ported from @deepseek-ai/dsh-skill-office@0.2.1-rc.2
+(https://github.com/deepseek-ai/deepseek-harness, packages/skill/skill-office),
+Copyright (c) 2026 DeepSeek, licensed under the MIT License (full text in
+LICENSE). Adaptations for pi: the DSH skill tool becomes sibling-directory
+SKILL.md loading, the bundled Python tool becomes python/SETUP.md, and the
+injected engine paths become scripts/resolve-dsoffice.mjs.
+scripts/sync-from-dsh.mjs regenerates skills/ from upstream with exact-match
+assertions, so future upstream updates can be tracked deliberately.
+
+The document engine is @deepseek-ai/libreoffice-kit and its platform packages
+(https://github.com/deepseek-ai/dsh-libreoffice-kit), Copyright (c) DeepSeek,
+licensed under the MPL-2.0. It is installed as an npm dependency of this
+package and is not redistributed inside this repository.

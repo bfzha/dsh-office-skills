@@ -1,0 +1,37 @@
+{
+	"name": "dsh-office-skills",
+	"version": "0.1.0",
+	"description": "Office document skills for pi, ported from DeepSeek Harness (DSH): author and edit DOCX/XLSX/PPTX with Python; render, recalculate, and export PDF with LibreOffice Kit",
+	"keywords": [
+		"pi-package",
+		"pi",
+		"agent-skills",
+		"office",
+		"docx",
+		"xlsx",
+		"pptx",
+		"pdf",
+		"libreoffice"
+	],
+	"license": "MIT",
+	"type": "module",
+	"engines": {
+		"node": ">=22.19.0"
+	},
+	"pi": {
+		"skills": [
+			"./skills"
+		]
+	},
+	"files": [
+		"LICENSE",
+		"NOTICE",
+		"README.md",
+		"python/",
+		"scripts/",
+		"skills/"
+	],
+	"dependencies": {
+		"@deepseek-ai/libreoffice-kit": "^0.2.0"
+	}
+}

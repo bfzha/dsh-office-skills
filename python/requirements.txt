@@ -1,0 +1,6 @@
+# Python libraries for the office skills (see SETUP.md next to this file).
+# Floors match versions the skills were verified against; current PyPI versions: {"python-docx":"1.2.0","python-pptx":"1.0.2","openpyxl":"3.1.5","pandas":"3.0.6"}.
+python-docx>=1.1
+python-pptx>=1.0
+openpyxl>=3.1
+pandas>=2.2
