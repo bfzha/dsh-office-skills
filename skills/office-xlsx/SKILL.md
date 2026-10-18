@@ -1,4 +1,5 @@
 ---
+# Ported from DSH: @deepseek-ai/dsh-skill-office (MIT) — see NOTICE.
 name: office-xlsx
 description: Read, create, edit, and validate Excel workbooks, data, and formulas (.xlsx).
 license: MIT
@@ -51,5 +52,3 @@ Load `office-render` for requested images or visual inspection and whenever the 
 Load `office-recalculate` when refreshed calculated values are needed and `office-export-pdf` for PDF output. Deliver after the requested data checks pass and the required operations finish.
 
 Report the actual final workbook path in the reply so the user can open it from the workspace; keep the file in place and omit intermediate scripts and reports unless requested. If the session provides a file-delivery or presentation mechanism, use it with the same final path.
-
-<!-- Skill text ported from @deepseek-ai/dsh-skill-office (MIT, Copyright (c) 2026 DeepSeek): https://github.com/deepseek-ai/deepseek-harness. Unofficial pi packaging in dsh-office-skills; see NOTICE. -->

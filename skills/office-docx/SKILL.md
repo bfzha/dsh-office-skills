@@ -1,4 +1,5 @@
 ---
+# Ported from DSH: @deepseek-ai/dsh-skill-office (MIT) — see NOTICE.
 name: office-docx
 description: Create, read, edit, and validate Word documents (.docx).
 license: MIT
@@ -39,5 +40,3 @@ Reopen the saved document with python-docx and verify the requested content, rel
 Creating a file or changing content with incidental basic formatting does not require additional operations. Load `office-render` for requested images or visual inspection. When styling, font color, spacing, sizing, or text alignment is the requested edit, load `office-render` and inspect the changed page even without a separate visual-check request, unless the user explicitly skips rendering. For PDF output load `office-export-pdf`.
 
 Report the actual final DOCX path in the reply so the user can open it from the workspace; keep the file in place and omit temporary QA reports unless requested. If the session provides a file-delivery or presentation mechanism, use it with the same final path.
-
-<!-- Skill text ported from @deepseek-ai/dsh-skill-office (MIT, Copyright (c) 2026 DeepSeek): https://github.com/deepseek-ai/deepseek-harness. Unofficial pi packaging in dsh-office-skills; see NOTICE. -->

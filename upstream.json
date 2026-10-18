@@ -1,0 +1,15 @@
+{
+	"package": "@deepseek-ai/dsh-skill-office",
+	"repo": "https://github.com/deepseek-ai/deepseek-harness",
+	"version": "0.2.1-rc.2",
+	"portedAt": "2026-10-18",
+	"files": {
+		"office": "d5b9c95af707c95ca5d2d92cd7af21d04811dd8e88b99518947bdde11f2d9885",
+		"office-docx": "5c18a4368834b83494e45eef813143de6d723a2f348b54b013e4779ee3832b24",
+		"office-pptx": "3d2f09443f4ac82b4989ff100fc095c7b3e518dbb606df1c260ea1175eca056f",
+		"office-xlsx": "5b16d47b06d0b545c99c72f25ba6bd7063843adf2d487b1b0aee5b1f0d6db80e",
+		"office-render": "7ad77f63958bc5e69b1d5b2ebd2dac36eeaa4737563f72c7a941c2e22bfd551c",
+		"office-recalculate": "acc3729600af3660348944f0145f36359d60dabd349660947d6740d73feaceaf",
+		"office-export-pdf": "f474f6e2daa61875f4a1e346a83bf566e934ef9469de7b04ca2d137b66630723"
+	}
+}

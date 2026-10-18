@@ -1,4 +1,5 @@
 ---
+# Ported from DSH: @deepseek-ai/dsh-skill-office (MIT) — see NOTICE.
 name: office-pptx
 description: Create, read, edit, and validate PowerPoint presentations (.pptx).
 license: MIT
@@ -63,5 +64,3 @@ Reopen the saved presentation with python-pptx to verify the requested slide cou
 Deliver after the requested edits are verified. Creating a file or changing content with incidental basic formatting does not require additional operations. Load `office-render` for requested images or visual inspection and for appearance-focused styling, spacing, sizing, or alignment changes unless the user explicitly skips rendering. For PDF output load `office-export-pdf`.
 
 Report the actual final PPTX path in the reply so the user can open it from the workspace; keep the file in place and leave intermediate images and reports out of delivery unless requested. If the session provides a file-delivery or presentation mechanism, use it with the same final path.
-
-<!-- Skill text ported from @deepseek-ai/dsh-skill-office (MIT, Copyright (c) 2026 DeepSeek): https://github.com/deepseek-ai/deepseek-harness. Unofficial pi packaging in dsh-office-skills; see NOTICE. -->

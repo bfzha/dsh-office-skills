@@ -6,6 +6,8 @@
 		"pi-package",
 		"pi",
 		"agent-skills",
+		"dsh",
+		"deepseek-harness",
 		"office",
 		"docx",
 		"xlsx",
@@ -33,5 +35,9 @@
 	],
 	"dependencies": {
 		"@deepseek-ai/libreoffice-kit": "^0.2.0"
+	},
+	"scripts": {
+		"check:upstream": "node scripts/sync-upstream.mjs --check",
+		"apply:upstream": "node scripts/sync-upstream.mjs --apply"
 	}
 }

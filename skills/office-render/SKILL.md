@@ -1,4 +1,5 @@
 ---
+# Ported from DSH: @deepseek-ai/dsh-skill-office (MIT) — see NOTICE.
 name: office-render
 description: Render requested document images or inspect visual layout with LibreOffice Kit.
 license: MIT
@@ -30,5 +31,3 @@ For populated content, a fully transparent or uniformly blank image is a rendere
 If content and structure checks pass, name the saved file and verified edits as needed, then include exactly one visual-status sentence: "Content and structure checks passed; visual inspection was not completed." in English, or "内容与结构检查通过；视觉检查未完成。" in Chinese. Do not add a render or preview bullet, explain why inspection stopped, or describe the image or pixels. Report content or structure failures separately; never say all checks passed or claim visual verification.
 
 LibreOffice output can differ from Word, PowerPoint, or Excel. Images do not certify animation/media playback, refresh formula caches in the source workbook, or guarantee native application fidelity. Deliver requested files by reporting their final paths; keep the files in place. Do not deliver inspection images or reports unless requested.
-
-<!-- Skill text ported from @deepseek-ai/dsh-skill-office (MIT, Copyright (c) 2026 DeepSeek): https://github.com/deepseek-ai/deepseek-harness. Unofficial pi packaging in dsh-office-skills; see NOTICE. -->

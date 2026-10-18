@@ -1,17 +1,63 @@
-This is an UNOFFICIAL community port. It is not affiliated with, or endorsed
-by, DeepSeek. All credit for the skill texts and the document engine belongs
-to the DeepSeek Harness team.
+This package is an UNOFFICIAL community port of the Office skills from DeepSeek
+Harness (DSH). It is not affiliated with, endorsed by, or maintained by
+DeepSeek. The dsh prefix in the package name marks the origin of the skill
+texts, not official status.
 
-Skill texts are ported from @deepseek-ai/dsh-skill-office@0.2.1-rc.2
-(https://github.com/deepseek-ai/deepseek-harness, packages/skill/skill-office),
-Copyright (c) 2026 DeepSeek, licensed under the MIT License (full text in
-LICENSE). Adaptations for pi: the DSH skill tool becomes sibling-directory
-SKILL.md loading, the bundled Python tool becomes python/SETUP.md, and the
-injected engine paths become scripts/resolve-dsoffice.mjs.
-scripts/sync-from-dsh.mjs regenerates skills/ from upstream with exact-match
-assertions, so future upstream updates can be tracked deliberately.
+  Upstream package : @deepseek-ai/dsh-skill-office
+  Upstream repo    : https://github.com/deepseek-ai/deepseek-harness
+                     (packages/skill/skill-office)
+  Upstream license : MIT
+  Upstream author  : Copyright (c) 2026 DeepSeek
 
-The document engine is @deepseek-ai/libreoffice-kit and its platform packages
-(https://github.com/deepseek-ai/dsh-libreoffice-kit), Copyright (c) DeepSeek,
-licensed under the MPL-2.0. It is installed as an npm dependency of this
-package and is not redistributed inside this repository.
+The skill texts under skills/ are derived from that package and are
+redistributed here under the MIT License. The upstream copyright notice and
+permission notice are reproduced below as that license requires.
+
+----------------------------------------------------------------------
+MIT License
+
+Copyright (c) 2026 DeepSeek
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+----------------------------------------------------------------------
+
+Modifications made for pi (none of these exist upstream):
+
+- office              : the "skill" tool invocation is replaced by reading the
+                        sibling skill's SKILL.md, because pi loads skills by
+                        reading files instead of calling a skill tool.
+- office-docx/-xlsx/-pptx : "load_workspace_dependencies" is replaced by the
+                        python/SETUP.md consent-first environment procedure.
+- office-render/-recalculate/-export-pdf : node and CLI paths injected at load
+                        time upstream are replaced by scripts/resolve-dsoffice.mjs,
+                        which resolves them at runtime.
+- delivery via "present" is replaced by reporting the final file path, since pi
+  has no present tool.
+- skills/office/references/sidecar.md is rewritten for npm-installed
+  dependencies (upstream describes a DSH-native bootstrap).
+- python/SETUP.md, python/requirements.txt and scripts/resolve-dsoffice.mjs are
+  new files written for this port.
+- scripts/sync-upstream.mjs and upstream.json are new files that re-port the
+  skill texts from a published upstream version and fail loudly when upstream
+  wording drifts (see README, "Keeping up with upstream").
+
+The document engine, @deepseek-ai/libreoffice-kit and its platform packages,
+is Copyright (c) DeepSeek and licensed under the Mozilla Public License 2.0
+(MPL-2.0). It is installed as an npm dependency and is NOT redistributed in
+this repository or its npm tarball.

@@ -1,6 +1,11 @@
 # dsh-office-skills
 
-Office document skills for [pi](https://github.com/earendil-works/pi-coding-agent), ported from [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) (DSH): create and edit Word (.docx), Excel (.xlsx), and PowerPoint (.pptx) with Python, and render pages to images, recalculate spreadsheet formulas, and export to PDF with the bundled LibreOffice Kit engine.
+Office document skills for [pi](https://github.com/earendil-works/pi-coding-agent), **ported from [DeepSeek Harness (DSH)](https://github.com/deepseek-ai/deepseek-harness)**.
+
+**Unofficial community port** — not affiliated with, endorsed by, or maintained by DeepSeek.
+
+This is not an independent reimplementation. The skill texts come from DSH's
+[`@deepseek-ai/dsh-skill-office`](https://github.com/deepseek-ai/deepseek-harness) (MIT, (c) 2026 DeepSeek) and are adapted so pi can use them. See [NOTICE](./NOTICE) for the upstream copyright notice, the full MIT text, and the exact list of changes.
 
 ## Install
 
@@ -8,7 +13,10 @@ Office document skills for [pi](https://github.com/earendil-works/pi-coding-agen
 pi install npm:dsh-office-skills
 ```
 
-The install downloads the LibreOffice Kit engine via npm optional dependencies: your platform's native engine (~150-190 MB unpacked) plus the universal WASM fallback (~145 MB), about 335 MB on Windows x64. No system LibreOffice or Microsoft Office is required.
+The install pulls the LibreOffice Kit engine through npm optional dependencies:
+your platform's native engine (~150-190 MB unpacked) plus the universal WASM
+fallback (~145 MB), about 335 MB on Windows x64. No system LibreOffice and no
+Microsoft Office installation are required.
 
 ## Skills provided
 
@@ -22,29 +30,42 @@ The install downloads the LibreOffice Kit engine via npm optional dependencies: 
 | `office-recalculate` | Refresh spreadsheet formula caches and verify calculated values |
 | `office-export-pdf` | Convert an Office document to PDF |
 
-Just ask pi to build or edit an Office file; it loads the matching skill. Force the router with `/skill:office`.
+Ask pi to build or edit an Office file and it loads the matching skill. Force the
+router with `/skill:office`.
 
 ## Requirements
 
 - pi (which itself requires Node.js >= 22.19).
-- Python 3.9+ for the authoring skills. Missing libraries (python-docx, python-pptx, openpyxl, pandas) are installed with pip only after you agree; see `python/SETUP.md`.
+- Python 3.9+ for the authoring skills. Missing libraries (python-docx,
+  python-pptx, openpyxl, pandas) are installed with pip only after you agree;
+  see [python/SETUP.md](./python/SETUP.md) and `python/requirements.txt`.
 
-## Provenance and license
+## Keeping up with upstream (DSH)
 
-**This is an unofficial community port** — not affiliated with, or endorsed by, DeepSeek. All credit for the skill texts and the document engine goes to the DeepSeek Harness team. The package name keeps the `dsh` prefix to mark that origin.
-
-- Skill texts: ported from [`@deepseek-ai/dsh-skill-office@0.2.1-rc.2`](https://github.com/deepseek-ai/deepseek-harness/tree/main/packages/skill/skill-office) (MIT, Copyright (c) 2026 DeepSeek). The original copyright notice is preserved in LICENSE and NOTICE, and every SKILL.md carries a source comment.
-- Document engine: [`@deepseek-ai/libreoffice-kit`](https://github.com/deepseek-ai/dsh-libreoffice-kit) (MPL-2.0, Copyright (c) DeepSeek), consumed as an npm dependency — not redistributed in this repository.
-- The pi packaging itself (`python/SETUP.md`, `scripts/resolve-dsoffice.mjs`, `scripts/sync-from-dsh.mjs`) is original to this port (MIT).
-
-## Tracking upstream DSH updates
-
-`scripts/sync-from-dsh.mjs` regenerates `skills/*/SKILL.md` from an upstream `dsh-skill-office` assets root, re-applying the pi adaptations with exact-match assertions:
+The port is mechanical and reproducible. `upstream.json` records which upstream
+version this package is based on plus a sha256 per upstream skill file.
 
 ```bash
-npm pack @deepseek-ai/dsh-skill-office@<version>
-tar -xzf deepseek-ai-dsh-skill-office-<version>.tgz
-node scripts/sync-from-dsh.mjs ./package/assets
+npm run check:upstream   # compare the baseline with the newest published upstream version
+npm run apply:upstream   # re-port from the newest published upstream version
 ```
 
-If upstream reworded a sentence, the script stops with the offending text instead of silently drifting; update the replacement table inside the script and commit both together. `skills/office/references/sidecar.md` is a pi-specific rewrite — diff it by hand against upstream `assets/office/references/sidecar.md` when syncing.
+`scripts/sync-upstream.mjs` downloads the upstream tarball, applies the adaptations
+below, and **fails loudly** when an upstream sentence it must rewrite has changed.
+Drift is never silently dropped: update `RULES` in that script and re-run.
+
+| Upstream (DSH) | This port (pi) |
+| --- | --- |
+| `skill` tool invocation | read the sibling skill's `SKILL.md` |
+| `load_workspace_dependencies` | `python/SETUP.md` consent-first flow |
+| node/CLI paths injected at load time | `scripts/resolve-dsoffice.mjs` resolves them at runtime |
+| `present({"files": [...]})` delivery | report the final file path |
+
+Hand-maintained files that the sync script never rewrites:
+`skills/office/references/sidecar.md` (rewritten for npm-installed dependencies),
+`python/`, and `scripts/resolve-dsoffice.mjs`.
+
+## License
+
+- Skill texts: MIT, derived from `@deepseek-ai/dsh-skill-office` — Copyright (c) 2026 DeepSeek. The upstream notice is reproduced in [NOTICE](./NOTICE); the package itself is [MIT](./LICENSE).
+- Engine (`@deepseek-ai/libreoffice-kit` and platform packages): MPL-2.0, Copyright (c) DeepSeek. It is installed as an npm dependency and is not redistributed here.
