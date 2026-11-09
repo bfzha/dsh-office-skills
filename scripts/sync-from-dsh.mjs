@@ -217,7 +217,10 @@ async function downloadUpstream(version, meta) {
   const res = await fetch(tarball);
   if (!res.ok) throw new Error("tarball download failed with HTTP " + res.status);
   writeFileSync(tgz, Buffer.from(await res.arrayBuffer()));
-  execFileSync("tar", ["-xzf", tgz, "-C", work], { stdio: "ignore" });
+  // Relative paths + cwd: on Windows an absolute "F:\\..." archive path reads as a
+  // remote host spec to the GNU tar shipped with Git, and System32's bsdtar rejects
+  // the --force-local workaround. Staying relative works for both.
+  execFileSync("tar", ["-xzf", "upstream.tgz", "-C", "."], { cwd: work, stdio: "ignore" });
   const assets = join(work, "package", "assets");
   if (!existsSync(assets)) throw new Error("upstream tarball has no assets directory");
   const texts = {};
