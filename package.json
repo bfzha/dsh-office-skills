@@ -16,6 +16,14 @@
 		"libreoffice"
 	],
 	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/bfzha/dsh-office-skills.git"
+	},
+	"homepage": "https://github.com/bfzha/dsh-office-skills#readme",
+	"bugs": {
+		"url": "https://github.com/bfzha/dsh-office-skills/issues"
+	},
 	"type": "module",
 	"engines": {
 		"node": ">=22.19.0"
