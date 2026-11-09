@@ -1,5 +1,7 @@
 # Missing LibreOffice Kit engine
 
+<!-- Ported from DSH: @deepseek-ai/dsh-skill-office (MIT) — see NOTICE. -->
+
 The office-render, office-recalculate, and office-export-pdf skills call the LibreOffice Kit CLI. This package declares `@deepseek-ai/libreoffice-kit` as an npm dependency, and npm installs the engine matching the current platform automatically. Work through this page only when that dependency is missing or broken.
 
 1. Run `node ../../scripts/resolve-dsoffice.mjs` from the skill directory. Success prints the absolute `node` and `cli` paths and ends the check.
